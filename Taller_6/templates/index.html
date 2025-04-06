@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+{% block content %}
+    <h1>Libros registrados</h1>
+        <table bgcolor = "black">
+            <tr bgcolor = "grey" width="400">
+                <th width="100">Titulo<th>
+                <th width="100">Genero<th>
+                <th width="100">Autor<th>
+                <th width="100">Estado<th>
+            </tr> 
+            {% for key, libro in libros.items() %} 
+                <tr bgcolor="lightgray" align="center">
+                    <td>{{ libro['libro'] }}<td>                      
+                    <td>{{ libro['genero'] }}<td>                      
+                    <td>{{ libro['autor'] }}<td>                       
+                    <td><input type="checkbox" name="leido">
+                    <label for="leido">Leido</label><td> 
+                    
+                <a href="{{ url_for('editar_libro', index=key.split(':')[1]|int) }}">Editar</a> 
+                <a href="{{ url_for('eliminar_libro', index=key.split(':')[1]|int) }}">Eliminar</a><br><br> 
+            {% endfor %}
+        </table>    
+    <a href="{{ url_for('registrar_libro') }}">Añadir un libro</a>
+    <a href="{{ url_for('buscar_libro') }}">Buscar un libro</a>
+{% endblock content %}

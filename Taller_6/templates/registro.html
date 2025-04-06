@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% block content %}
+    <h1>Añade un libro</h1> 
+    <form method="POST"> 
+        <label>Nombre del libro</label><br> 
+        <input type="text" name="nombre" required><br><br>
+
+        <label>Genero del libro</label><br> 
+        <input type="text" name="genero" required><br><br>
+
+        <label>Autor del libro</label><br> 
+        <input type="text" name="autor" required><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>    
+    <a href="{{ url_for('index') }}">Ver libros</a>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Historial de Búsquedas</h1>
+
+    {% if resultado %}
+        <table bgcolor="black">
+            <tr bgcolor="grey" align="center">
+                <th width="100">Título</th>
+                <th width="100">Género</th>
+                <th width="100">Autor</th>
+                <th width="100">Búsqueda</th>
+            </tr>
+
+            {% for libro in resultado %}
+                <tr bgcolor="lightgray" align="center">
+                    <td>{{ libro['titulo'] }}</td>
+                    <td>{{ libro['genero'] }}</td>
+                    <td>{{ libro['autor'] }}</td>
+                    <td>{{ libro['busqueda'] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No hay historial de búsquedas.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }}">Ver libros</a>
+{% endblock content %}
